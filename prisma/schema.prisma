@@ -12,3 +12,55 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id      String  @id @default(uuid())
+  name    String
+  email   String
+  address String
+  isAdmin Boolean
+}
+
+model VehicleBrand {
+  id          String        @id @default(uuid())
+  name        String
+  country     String
+  logoUri     String
+  websiteUri  String
+  description String
+  VehicleType VehicleType[]
+}
+
+model VehicleType {
+  id             String         @id @default(uuid())
+  name           String
+  description    String
+  isOnroad       String
+  VehicleBrand   VehicleBrand   @relation(fields: [vehicleBrandId], references: [id])
+  vehicleBrandId String
+  VehicleModel   VehicleModel[]
+}
+
+model VehicleModel {
+  id            String      @id @default(uuid())
+  name          String
+  VehicleTypeId VehicleType @relation(fields: [vehicleTypeId], references: [id])
+  vehicleTypeId String
+  PriceList     PriceList[]
+}
+
+model VehicleYear {
+  id        String      @id @default(uuid())
+  year      String      @db.Char(4)
+  PriceList PriceList[]
+}
+
+model PriceList {
+  id             String       @id @default(uuid())
+  code           String
+  price          Int
+  VehicleYear    VehicleYear  @relation(fields: [vehicleYearId], references: [id])
+  vehicleYearId  String
+  VehicleModel   VehicleModel @relation(fields: [vehicleModelId], references: [id])
+  vehicleModelId String
+}

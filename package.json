@@ -7,7 +7,10 @@
     "posttest": "bun docker:test:down",
     "docker:test:up": "docker compose up -d db-test",
     "docker:test:down": "docker compose down db-test",
-    "db:deploy": "bunx prisma migrate deploy"
+    "docker:dev:up": "docker compose up -d db-dev",
+    "docker:dev:down": "docker compose down db-dev",
+    "db:deploy": "bunx prisma migrate deploy",
+    "db:migrate": "bunx prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
