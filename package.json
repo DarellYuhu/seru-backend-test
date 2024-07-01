@@ -1,0 +1,21 @@
+{
+  "name": "seru-backend-test",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "pretest": "bun docker:test:up && sleep 3 && bun --env-file=.env.test run db:deploy",
+    "test": "bun test",
+    "posttest": "bun docker:test:down",
+    "docker:test:up": "docker compose up -d db-test",
+    "docker:test:down": "docker compose down db-test",
+    "db:deploy": "bunx prisma migrate deploy"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.16.1",
+    "hono": "^4.4.10"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "prisma": "^5.16.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
