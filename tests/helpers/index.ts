@@ -15,7 +15,10 @@ const generateCases = (
 };
 
 const clearDatabase = async () => {
-  await prisma.$transaction([prisma.user.deleteMany()]);
+  await prisma.$transaction([
+    prisma.user.deleteMany(),
+    prisma.vehicleBrand.deleteMany(),
+  ]);
 };
 
 const seedDatabase = async () => {
@@ -31,7 +34,18 @@ const seedDatabase = async () => {
     data: userPayload,
   });
   user.password = pass;
-  return { user };
+
+  const vehicleBrand = Array.from({ length: 20 }).map(() => ({
+    name: faker.vehicle.manufacturer(),
+    country: faker.location.country(),
+    logoUri: faker.internet.url(),
+    websiteUri: faker.internet.url(),
+    description: faker.lorem.paragraph(),
+  }));
+  const vehicles = await prisma.vehicleBrand.createManyAndReturn({
+    data: vehicleBrand,
+  });
+  return { user, vehicles };
 };
 
 export { generateCases, clearDatabase, seedDatabase };

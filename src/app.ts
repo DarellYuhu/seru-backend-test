@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { auth } from "./api";
+import { auth, vehicleBrand } from "./api";
 import { HTTPException } from "hono/http-exception";
 
 const app = new Hono();
@@ -9,6 +9,7 @@ app.get("/", (c) => {
 });
 
 app.route("/auth", auth);
+app.route("/vehicle-brand", vehicleBrand);
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
