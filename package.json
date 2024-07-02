@@ -13,10 +13,13 @@
     "db:migrate": "bunx prisma migrate dev"
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.2.2",
     "@prisma/client": "^5.16.1",
-    "hono": "^4.4.10"
+    "hono": "^4.4.10",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/bun": "latest",
     "prisma": "^5.16.1"
   },

@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -14,11 +15,13 @@ datasource db {
 }
 
 model User {
-  id      String  @id @default(uuid())
-  name    String
-  email   String
-  address String
-  isAdmin Boolean
+  id       String  @id @default(uuid())
+  username String  @unique
+  password String
+  name     String
+  email    String?
+  address  String?
+  isAdmin  Boolean @default(false)
 }
 
 model VehicleBrand {
