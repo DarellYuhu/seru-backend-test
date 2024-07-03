@@ -1,0 +1,1318 @@
+{
+	"info": {
+		"_postman_id": "a4c3532f-4864-4e79-a541-fa2d418f9485",
+		"name": "SERU-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27564642"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Create new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\",\r\n    \"confirmPassword\": \"\",\r\n    \"name\": \"\",\r\n    \"email\": \"\",\r\n    \"address\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_API}}/auth/signup",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"darell2024\",\r\n    \"password\": \"1234567\",\r\n    \"confirmPassword\": \"1234567\",\r\n    \"name\": \"Darell\",\r\n    \"email\": \"darell@mail.com\",\r\n    \"address\": \"Jl. Programmer handal No. 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/auth/signup",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:19:42 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Account create successfully\",\n    \"data\": {\n        \"id\": \"93991b86-146b-43a8-8d65-81cb18af7bc7\",\n        \"username\": \"darell2024\",\n        \"name\": \"Darell\",\n        \"email\": \"darell@mail.com\",\n        \"address\": \"Jl. Programmer handal No. 1\",\n        \"isAdmin\": false,\n        \"createAt\": \"2024-07-03T23:19:42.982Z\",\n        \"updateAt\": \"2024-07-03T23:19:42.982Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create new admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\",\r\n    \"confirmPassword\": \"\",\r\n    \"name\": \"\",\r\n    \"email\": \"\",\r\n    \"address\": \"\",\r\n    \"isAdmin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_API}}/auth/signup",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"adminganteng\",\r\n    \"password\": \"123456\",\r\n    \"confirmPassword\": \"123456\",\r\n    \"name\": \"Admin Dunia Maya\",\r\n    \"email\": \"admin@mail.com\",\r\n    \"address\": \"Jl. Si paling programmer No. 1\",\r\n    \"isAdmin\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/auth/signup",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:22:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "324"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Account create successfully\",\n    \"data\": {\n        \"id\": \"f2719da3-de2d-4f81-86a0-3560d71f2f27\",\n        \"username\": \"adminganteng\",\n        \"name\": \"Admin Dunia Maya\",\n        \"email\": \"admin@mail.com\",\n        \"address\": \"Jl. Si paling programmer No. 1\",\n        \"isAdmin\": true,\n        \"createAt\": \"2024-07-03T23:22:55.914Z\",\n        \"updateAt\": \"2024-07-03T23:22:55.914Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Signin user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_API}}/auth/signin",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"darell2024\",\r\n    \"password\": \"1234567\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/auth/signin",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:24:51 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "437"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Loged in successfully\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5Mzk5MWI4Ni0xNDZiLTQzYTgtOGQ2NS04MWNiMThhZjdiYzciLCJuYW1lIjoiRGFyZWxsIiwiYWRkcmVzcyI6IkpsLiBQcm9ncmFtbWVyIGhhbmRhbCBOby4gMSIsImVtYWlsIjoiZGFyZWxsQG1haWwuY29tIn0.rdKigd4GU47fxxxLDPS2bTUOMlbuvdnmvHWNCcHM63A\",\n        \"user\": {\n            \"id\": \"93991b86-146b-43a8-8d65-81cb18af7bc7\",\n            \"name\": \"Darell\",\n            \"email\": \"darell@mail.com\",\n            \"isAdmin\": false\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Vehicle Brand",
+			"item": [
+				{
+					"name": "Add Brand",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_API}}/vehicle-brand",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"vehicle-brand"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:28:41 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Please login first\"\n}"
+						},
+						{
+							"name": "403",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:29:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"You don't have permission to perform this action\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Honda\",\r\n    \"country\": \"Japan\",\r\n    \"logoUri\": \"http://honda.com/fake-logo.jpg\",\r\n    \"websiteUri\": \"http://honda.com/\",\r\n    \"description\": \"Fastest vehicle in japan\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:32:01 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Brand create successfuly\",\n    \"data\": {\n        \"id\": \"51c2d60e-5400-424a-87de-e9d405a05069\",\n        \"name\": \"Honda\",\n        \"country\": \"Japan\",\n        \"logoUri\": \"http://honda.com/fake-logo.jpg\",\n        \"websiteUri\": \"http://honda.com/\",\n        \"description\": \"Fastest vehicle in japan\",\n        \"createAt\": \"2024-07-03T23:32:00.206Z\",\n        \"updateAt\": \"2024-07-03T23:32:00.206Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_API}}/vehicle-brand",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"vehicle-brand"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "country",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:39:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4087"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data retrieve successfully\",\n    \"data\": [\n        {\n            \"id\": \"20c56447-a876-4531-9097-06560bc4ad6c\",\n            \"name\": \"Land Rover\",\n            \"country\": \"Liechtenstein\",\n            \"logoUri\": \"https://nutty-tape.net/\",\n            \"websiteUri\": \"https://tall-taxi.biz\",\n            \"description\": \"Ante despecto comptus excepturi. Aqua consuasor vobis molestiae. Deporto teneo paulatim deprimo numquam volubilis curvo ab.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"2511edee-4a80-4d00-9e54-6076a9dd32ec\",\n            \"name\": \"Ford\",\n            \"country\": \"United Arab Emirates\",\n            \"logoUri\": \"https://crafty-ring.info/\",\n            \"websiteUri\": \"https://our-maple.biz/\",\n            \"description\": \"Voro convoco angustus vitiosus toties utrum dolore adflicto undique truculenter. Veritatis animus comburo suggero chirographum abbas arto cito curtus. Spectaculum tamen thesis succedo sum.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"2530d87d-8e24-4147-8bc1-f37df0936f00\",\n            \"name\": \"Jeep\",\n            \"country\": \"Iran\",\n            \"logoUri\": \"https://silent-pork.biz\",\n            \"websiteUri\": \"https://internal-slime.info/\",\n            \"description\": \"Aptus angustus statim adficio vetus iure ager territo cetera dolor. Degusto arx confugo curia. Bene verto compello vis adduco templum socius appositus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"3d13d6c5-54ae-41b1-aaf4-5b35202aaa00\",\n            \"name\": \"Cadillac\",\n            \"country\": \"Bolivia\",\n            \"logoUri\": \"https://humiliating-precedent.name/\",\n            \"websiteUri\": \"https://gloomy-antigen.net\",\n            \"description\": \"Commemoro cunctatio tamen atqui. Ipsum ex bis curriculum ultio callide tenus blandior cupressus hic. Alter decor sortitus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"4314d46a-ad78-445d-976c-cfeb9f78eac5\",\n            \"name\": \"Smart\",\n            \"country\": \"United States of America\",\n            \"logoUri\": \"https://thorough-program.org\",\n            \"websiteUri\": \"https://whispered-monocle.net\",\n            \"description\": \"Quasi tabula amplexus talio occaecati deinde alius. Laborum tripudio dedecor triduana sortitus tonsor deinde ad. Tempore valetudo conspergo circumvenio uter.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"438ca727-339b-454f-a0cd-ebb9ac3d461e\",\n            \"name\": \"Chevrolet\",\n            \"country\": \"Ireland\",\n            \"logoUri\": \"https://sudden-bookmark.name\",\n            \"websiteUri\": \"https://sparse-boudoir.info/\",\n            \"description\": \"Curatio inflammatio occaecati subiungo certus defetiscor voro adhaero capitulus. A peior vester velociter supra maxime contabesco. Comburo adficio thema pectus cognomen cariosus aperiam calco.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"51c2d60e-5400-424a-87de-e9d405a05069\",\n            \"name\": \"Honda\",\n            \"country\": \"Japan\",\n            \"logoUri\": \"http://honda.com/fake-logo.jpg\",\n            \"websiteUri\": \"http://honda.com/\",\n            \"description\": \"Fastest vehicle in japan\",\n            \"createAt\": \"2024-07-03T23:32:00.206Z\",\n            \"updateAt\": \"2024-07-03T23:32:00.206Z\"\n        },\n        {\n            \"id\": \"5c3769db-ac30-428c-b9b7-fe159214849a\",\n            \"name\": \"Lamborghini\",\n            \"country\": \"South Sudan\",\n            \"logoUri\": \"https://woeful-ambassador.biz\",\n            \"websiteUri\": \"https://different-dome.name/\",\n            \"description\": \"Arguo ventito abstergo aliquid clamo velociter. Denuo tener clarus minus. Sulum curriculum deserunt.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"61e5ce86-4ddd-4b6e-93d9-f9bca836f866\",\n            \"name\": \"Fiat\",\n            \"country\": \"Mozambique\",\n            \"logoUri\": \"https://queasy-daffodil.biz/\",\n            \"websiteUri\": \"https://biodegradable-min.com\",\n            \"description\": \"Dolores thesis tremo. Velociter tonsor surculus trucido adamo suppellex caste absens antiquus. Tersus crepusculum debeo amoveo arcesso aggero ter cuppedia turpis ultra.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"740df92b-f283-4682-8d99-73ff9138ad8d\",\n            \"name\": \"Mini\",\n            \"country\": \"Madagascar\",\n            \"logoUri\": \"https://critical-guidance.name\",\n            \"websiteUri\": \"https://ecstatic-badger.org/\",\n            \"description\": \"Cubicularis carbo pauci. Ambulo mollitia atrocitas adfectus. Compono suppono sto sapiente conatus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        }\n    ],\n    \"metadata\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalItem\": 10,\n        \"totalPage\": 3,\n        \"totalAll\": 21\n    }\n}"
+						},
+						{
+							"name": "200 - by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand?name=Chevrolet",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Chevrolet"
+										},
+										{
+											"key": "country",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:40:16 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1019"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data retrieve successfully\",\n    \"data\": [\n        {\n            \"id\": \"438ca727-339b-454f-a0cd-ebb9ac3d461e\",\n            \"name\": \"Chevrolet\",\n            \"country\": \"Ireland\",\n            \"logoUri\": \"https://sudden-bookmark.name\",\n            \"websiteUri\": \"https://sparse-boudoir.info/\",\n            \"description\": \"Curatio inflammatio occaecati subiungo certus defetiscor voro adhaero capitulus. A peior vester velociter supra maxime contabesco. Comburo adficio thema pectus cognomen cariosus aperiam calco.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"c92fe8da-2c13-46b6-bff1-61d459f1a456\",\n            \"name\": \"Chevrolet\",\n            \"country\": \"Egypt\",\n            \"logoUri\": \"https://snappy-nightgown.com\",\n            \"websiteUri\": \"https://faraway-branch.org\",\n            \"description\": \"Quisquam fuga peccatus combibo altus terminatio arma aegrotatio tendo sustineo. Volup acidus substantia charisma coruscus soluta. Audax asperiores alius vox ultra.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        }\n    ],\n    \"metadata\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalItem\": 2,\n        \"totalPage\": 1,\n        \"totalAll\": 2\n    }\n}"
+						},
+						{
+							"name": "200 - by contry",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand?country=Bolivia",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Chevrolet",
+											"disabled": true
+										},
+										{
+											"key": "country",
+											"value": "Bolivia"
+										},
+										{
+											"key": "limit",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:41:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "531"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data retrieve successfully\",\n    \"data\": [\n        {\n            \"id\": \"3d13d6c5-54ae-41b1-aaf4-5b35202aaa00\",\n            \"name\": \"Cadillac\",\n            \"country\": \"Bolivia\",\n            \"logoUri\": \"https://humiliating-precedent.name/\",\n            \"websiteUri\": \"https://gloomy-antigen.net\",\n            \"description\": \"Commemoro cunctatio tamen atqui. Ipsum ex bis curriculum ultio callide tenus blandior cupressus hic. Alter decor sortitus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        }\n    ],\n    \"metadata\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalItem\": 1,\n        \"totalPage\": 1,\n        \"totalAll\": 1\n    }\n}"
+						},
+						{
+							"name": "200 - limit by 5 item",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand?limit=5",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Chevrolet",
+											"disabled": true
+										},
+										{
+											"key": "country",
+											"value": "Bolivia",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "page",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:41:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2197"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data retrieve successfully\",\n    \"data\": [\n        {\n            \"id\": \"20c56447-a876-4531-9097-06560bc4ad6c\",\n            \"name\": \"Land Rover\",\n            \"country\": \"Liechtenstein\",\n            \"logoUri\": \"https://nutty-tape.net/\",\n            \"websiteUri\": \"https://tall-taxi.biz\",\n            \"description\": \"Ante despecto comptus excepturi. Aqua consuasor vobis molestiae. Deporto teneo paulatim deprimo numquam volubilis curvo ab.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"2511edee-4a80-4d00-9e54-6076a9dd32ec\",\n            \"name\": \"Ford\",\n            \"country\": \"United Arab Emirates\",\n            \"logoUri\": \"https://crafty-ring.info/\",\n            \"websiteUri\": \"https://our-maple.biz/\",\n            \"description\": \"Voro convoco angustus vitiosus toties utrum dolore adflicto undique truculenter. Veritatis animus comburo suggero chirographum abbas arto cito curtus. Spectaculum tamen thesis succedo sum.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"2530d87d-8e24-4147-8bc1-f37df0936f00\",\n            \"name\": \"Jeep\",\n            \"country\": \"Iran\",\n            \"logoUri\": \"https://silent-pork.biz\",\n            \"websiteUri\": \"https://internal-slime.info/\",\n            \"description\": \"Aptus angustus statim adficio vetus iure ager territo cetera dolor. Degusto arx confugo curia. Bene verto compello vis adduco templum socius appositus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"3d13d6c5-54ae-41b1-aaf4-5b35202aaa00\",\n            \"name\": \"Cadillac\",\n            \"country\": \"Bolivia\",\n            \"logoUri\": \"https://humiliating-precedent.name/\",\n            \"websiteUri\": \"https://gloomy-antigen.net\",\n            \"description\": \"Commemoro cunctatio tamen atqui. Ipsum ex bis curriculum ultio callide tenus blandior cupressus hic. Alter decor sortitus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"4314d46a-ad78-445d-976c-cfeb9f78eac5\",\n            \"name\": \"Smart\",\n            \"country\": \"United States of America\",\n            \"logoUri\": \"https://thorough-program.org\",\n            \"websiteUri\": \"https://whispered-monocle.net\",\n            \"description\": \"Quasi tabula amplexus talio occaecati deinde alius. Laborum tripudio dedecor triduana sortitus tonsor deinde ad. Tempore valetudo conspergo circumvenio uter.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        }\n    ],\n    \"metadata\": {\n        \"page\": 1,\n        \"limit\": 5,\n        \"totalItem\": 5,\n        \"totalPage\": 5,\n        \"totalAll\": 21\n    }\n}"
+						},
+						{
+							"name": "200 - get  2nd page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand?page=2",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Chevrolet",
+											"disabled": true
+										},
+										{
+											"key": "country",
+											"value": "Bolivia",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "5",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:42:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4212"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data retrieve successfully\",\n    \"data\": [\n        {\n            \"id\": \"7a533580-30b7-4055-990d-3804336fef77\",\n            \"name\": \"Aston Martin\",\n            \"country\": \"Zimbabwe\",\n            \"logoUri\": \"https://fussy-prophet.info\",\n            \"websiteUri\": \"https://respectful-hepatitis.biz\",\n            \"description\": \"Demulceo validus timor clementia valens dapifer. Vindico auctor vorax cattus animus vulnus decipio desidero deinde. Delego deleo quaerat tripudio trucido deinde.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"7aa0f2d1-e616-4e06-9880-0bc8398bcf41\",\n            \"name\": \"Volvo\",\n            \"country\": \"Hong Kong\",\n            \"logoUri\": \"https://empty-dahlia.name/\",\n            \"websiteUri\": \"https://brilliant-labour.info\",\n            \"description\": \"Administratio atqui quod. Aer cicuta copiose desipio. Patrocinor asper appositus tres unde cohaero.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"81fc46eb-75c3-4e1e-b1c6-64acd0da74df\",\n            \"name\": \"Honda\",\n            \"country\": \"Haiti\",\n            \"logoUri\": \"https://well-worn-volcano.info\",\n            \"websiteUri\": \"https://queasy-worker.info/\",\n            \"description\": \"Quos conatus quas turpis cedo. Vehemens ascisco conqueror coruscus infit celebrer terror pecto chirographum. Recusandae catena dicta tumultus aptus patrocinor curtus cibo acies.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"89251d42-80d1-444f-a36d-17dda4a61f11\",\n            \"name\": \"Nissan\",\n            \"country\": \"Turkey\",\n            \"logoUri\": \"https://deadly-granny.biz/\",\n            \"websiteUri\": \"https://total-parenthesis.info\",\n            \"description\": \"Bellum sit amplus natus cognatus. Cum ultio vinitor contigo subvenio arcesso antea soluta. Bos comprehendo turba comis tero victus apparatus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"9f51eb05-ed25-4904-923f-566c3de66986\",\n            \"name\": \"Land Rover\",\n            \"country\": \"Malawi\",\n            \"logoUri\": \"https://finished-hacienda.name\",\n            \"websiteUri\": \"https://blissful-standing.info\",\n            \"description\": \"Stabilis curriculum cornu tumultus ut curvo nemo. Coniuratio sollers defaeco vere tutamen. Tamquam illum vae.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"b43c58de-d957-47ac-9f6b-42c796c6b5d8\",\n            \"name\": \"Honda\",\n            \"country\": \"Senegal\",\n            \"logoUri\": \"https://respectful-reform.biz/\",\n            \"websiteUri\": \"https://excellent-purse.com\",\n            \"description\": \"Caries uberrime decens clam maiores iste. Temptatio ex taedium admoneo quis textus laborum. Aestus recusandae articulus sed ducimus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"bf4fa0a1-1bbf-4a5a-ad85-4946919f2d02\",\n            \"name\": \"Tesla\",\n            \"country\": \"Singapore\",\n            \"logoUri\": \"https://queasy-truck.info\",\n            \"websiteUri\": \"https://rotating-railing.net\",\n            \"description\": \"Sollicito voluptas casso decumbo validus thermae quam tot. Compello audeo sollers canis incidunt tres corpus aptus vulgo. Tametsi aiunt varius.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"c45c1158-2557-4aa9-931c-6cb072ce5c3e\",\n            \"name\": \"Fiat\",\n            \"country\": \"Slovakia\",\n            \"logoUri\": \"https://jagged-license.biz\",\n            \"websiteUri\": \"https://foolish-tornado.biz\",\n            \"description\": \"Depopulo creo cogito tamen voluntarius vitae. Currus tempore carus patria. Fugiat attero pariatur occaecati adnuo aggredior campana aggero bonus.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"c50de399-88cc-464d-8526-42de5e68db91\",\n            \"name\": \"Bugatti\",\n            \"country\": \"Lesotho\",\n            \"logoUri\": \"https://lazy-sculpture.com\",\n            \"websiteUri\": \"https://attractive-trance.org\",\n            \"description\": \"Crudelis amo tandem certus ambitus ex cedo adhuc. Vinculum comes acies fugit taedium uberrime artificiose sollers accendo. Auditor vorago amplexus decumbo patior vigor libero crux statua cura.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        },\n        {\n            \"id\": \"c92fe8da-2c13-46b6-bff1-61d459f1a456\",\n            \"name\": \"Chevrolet\",\n            \"country\": \"Egypt\",\n            \"logoUri\": \"https://snappy-nightgown.com\",\n            \"websiteUri\": \"https://faraway-branch.org\",\n            \"description\": \"Quisquam fuga peccatus combibo altus terminatio arma aegrotatio tendo sustineo. Volup acidus substantia charisma coruscus soluta. Audax asperiores alius vox ultra.\",\n            \"createAt\": \"2024-07-03T23:36:34.643Z\",\n            \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n        }\n    ],\n    \"metadata\": {\n        \"page\": 2,\n        \"limit\": 10,\n        \"totalItem\": 10,\n        \"totalPage\": 3,\n        \"totalAll\": 21\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"vehicle-brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2511edee-4a80-4d00-9e54-6076a9dd32ec"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:49:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "343"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data retrieve successfully\",\n    \"data\": {\n        \"id\": \"2511edee-4a80-4d00-9e54-6076a9dd32ec\",\n        \"name\": \"Lamborghini\",\n        \"country\": \"Spain\",\n        \"logoUri\": \"http://lambo.com/fakelogo.jpg\",\n        \"websiteUri\": \"http://lambo.com/\",\n        \"description\": \"Fastest car in the world\",\n        \"createAt\": \"2024-07-03T23:36:34.643Z\",\n        \"updateAt\": \"2024-07-03T23:48:06.845Z\"\n    }\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2511edee-4a80-4d00-9e54-6076a9dd32ec-4"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:49:42 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Data you are searching for is unavailable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"vehicle-brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:44:24 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Please login first\"\n}"
+						},
+						{
+							"name": "403",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:45:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"You don't have permission to perform this action\"\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"\",\r\n    \"country\": \"\",\r\n    \"logoUri\": \"\",\r\n    \"websiteUri\": \"\",\r\n    \"description\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2511edee-4a80-4d00-9e54-6076a9dd32ec-d"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:46:52 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "225"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Record to update doesn't exist\",\n    \"error\": {\n        \"name\": \"PrismaClientKnownRequestError\",\n        \"code\": \"P2025\",\n        \"clientVersion\": \"5.16.1\",\n        \"meta\": {\n            \"modelName\": \"VehicleBrand\",\n            \"cause\": \"Record to update not found.\"\n        }\n    }\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Lamborghini\",\r\n    \"country\": \"Spain\",\r\n    \"logoUri\": \"http://lambo.com/fakelogo.jpg\",\r\n    \"websiteUri\": \"http://lambo.com/\",\r\n    \"description\": \"Fastest car in the world\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2511edee-4a80-4d00-9e54-6076a9dd32ec"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:48:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "341"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data update successfully\",\n    \"data\": {\n        \"id\": \"2511edee-4a80-4d00-9e54-6076a9dd32ec\",\n        \"name\": \"Lamborghini\",\n        \"country\": \"Spain\",\n        \"logoUri\": \"http://lambo.com/fakelogo.jpg\",\n        \"websiteUri\": \"http://lambo.com/\",\n        \"description\": \"Fastest car in the world\",\n        \"createAt\": \"2024-07-03T23:36:34.643Z\",\n        \"updateAt\": \"2024-07-03T23:48:06.845Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+							"host": [
+								"{{BASE_URL_API}}"
+							],
+							"path": [
+								"vehicle-brand",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "401",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:51:33 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Please login first\"\n}"
+						},
+						{
+							"name": "403",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:51:55 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"You don't have permission to perform this action\"\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:52:15 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "230"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Record to delete doesn't exist\",\n    \"error\": {\n        \"name\": \"PrismaClientKnownRequestError\",\n        \"code\": \"P2025\",\n        \"clientVersion\": \"5.16.1\",\n        \"meta\": {\n            \"modelName\": \"VehicleBrand\",\n            \"cause\": \"Record to delete does not exist.\"\n        }\n    }\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL_API}}/vehicle-brand/:id",
+									"host": [
+										"{{BASE_URL_API}}"
+									],
+									"path": [
+										"vehicle-brand",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "61e5ce86-4ddd-4b6e-93d9-f9bca836f866"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2024 23:53:18 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "494"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Data update successfully\",\n    \"data\": {\n        \"id\": \"61e5ce86-4ddd-4b6e-93d9-f9bca836f866\",\n        \"name\": \"Fiat\",\n        \"country\": \"Mozambique\",\n        \"logoUri\": \"https://queasy-daffodil.biz/\",\n        \"websiteUri\": \"https://biodegradable-min.com\",\n        \"description\": \"Dolores thesis tremo. Velociter tonsor surculus trucido adamo suppellex caste absens antiquus. Tersus crepusculum debeo amoveo arcesso aggero ter cuppedia turpis ultra.\",\n        \"createAt\": \"2024-07-03T23:36:34.643Z\",\n        \"updateAt\": \"2024-07-03T23:36:34.643Z\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL_API",
+			"value": "http://localhost:2000",
+			"type": "string"
+		}
+	]
+}

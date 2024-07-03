@@ -1,7 +1,11 @@
 {
   "name": "seru-backend-test",
+  "prisma": {
+    "seed": "bun run prisma/seed.ts"
+  },
   "scripts": {
-    "dev": "bun run --hot src/index.ts",
+    "start": "bun run .",
+    "dev": "bun run --hot .",
     "build": "bun build . --target=node --outdir=dist",
     "pretest": "bun docker:test:up && sleep 3 && bun --env-file=.env.test run db:deploy",
     "test": "bun test",
@@ -11,7 +15,8 @@
     "docker:dev:up": "docker compose up -d db-dev",
     "docker:dev:down": "docker compose down db-dev",
     "db:deploy": "bunx prisma migrate deploy",
-    "db:migrate": "bunx prisma migrate dev"
+    "db:migrate": "bunx prisma migrate dev",
+    "db:seed": "bunx prisma db seed"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.2",

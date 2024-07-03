@@ -10,6 +10,8 @@ const vehicleBrand = new Hono();
 
 vehicleBrand.post(
   "/",
+  authentication,
+  authorization,
   zValidator("json", vehicleBrandSchema.create, (res, _) => {
     if (!res.success) {
       throw new HTTPException(400, {
@@ -106,7 +108,7 @@ vehicleBrand.patch(
   }
 );
 
-vehicleBrand.delete("/:id", async (c) => {
+vehicleBrand.delete("/:id", authentication, authorization, async (c) => {
   try {
     const id = c.req.param("id");
     const data = await vehicleBrandService._delete(id);
