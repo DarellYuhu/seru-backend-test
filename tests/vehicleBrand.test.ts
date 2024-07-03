@@ -7,12 +7,14 @@ import { ZodError } from "zod";
 
 let country: string;
 let name: string;
+let id: string;
 
 beforeAll(async () => {
   try {
     const { vehicles } = await seedDatabase();
     country = vehicles[0].country;
     name = vehicles[0].name;
+    id = vehicles[0].id;
   } catch (error) {
     console.log("ERR_CLEANUP", error);
   }
@@ -124,5 +126,94 @@ describe("Get all brand ", () => {
     expect(data.metadata).toBeObject();
     expect(data.metadata?.limit).toBe(5);
     expect(data.data?.[0]).toContainValue(name);
+  });
+});
+
+describe("Get by id", () => {
+  it("should fail get the data because not found", async () => {
+    const res = await app.request(`/vehicle-brand/${id}-NOT-FOUND`);
+    const data: TResponse<VehicleBrand> = await res.json();
+    expect(res.status).toBe(404);
+    expect(data.status).toBe("Failed");
+  });
+  it("should succesfully get brand by id", async () => {
+    const res = await app.request(`/vehicle-brand/${id}`);
+    const data: TResponse<VehicleBrand> = await res.json();
+    expect(res.status).toBe(200);
+    expect(data.status).toBe("Success");
+    expect(data.data?.id).toBeString();
+  });
+});
+
+describe("update by id", () => {
+  const payload: Prisma.VehicleBrandUpdateWithoutVehicleTypeInput = {
+    name: faker.vehicle.manufacturer(),
+    country: faker.location.country(),
+    description: faker.lorem.paragraph(),
+    logoUri: faker.internet.url(),
+    websiteUri: faker.internet.url(),
+  };
+
+  it("should fail update non exist data", async () => {
+    const res = await app.request(`/vehicle-brand/${id}-NON-EXIST`, {
+      method: "PATCH",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data: TResponse<Prisma.PrismaClientKnownRequestError> =
+      await res.json();
+    expect(res.status).toBe(404);
+    expect(data.status).toBe("Failed");
+    expect(data.error?.code).toBe("P2025");
+  });
+
+  it.each(["name", "country", "description", "logoUri", "websiteUri"])(
+    "should success update the %s in vehicle brand data",
+    async (key) => {
+      const newPayload = {
+        [key]:
+          payload[
+            key as keyof Prisma.VehicleBrandUpdateWithoutVehicleTypeInput
+          ],
+      };
+      const res = await app.request(`/vehicle-brand/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify(newPayload),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data: TResponse<VehicleBrand> = await res.json();
+      expect(res.status).toBe(200);
+      expect(data.status).toBe("Success");
+      expect(data.data?.[key as keyof VehicleBrand]).toBe(
+        payload[
+          key as keyof Prisma.VehicleBrandUpdateWithoutVehicleTypeInput
+        ] as string
+      );
+    }
+  );
+});
+
+describe("delete data by id", () => {
+  it("should fail delete non exist data", async () => {
+    const res = await app.request(`/vehicle-brand/${id}-NON-EXIST`, {
+      method: "DELETE",
+    });
+    const data: TResponse<Prisma.PrismaClientKnownRequestError> =
+      await res.json();
+    expect(res.status).toBe(404);
+    expect(data.status).toBe("Failed");
+    expect(data.error?.code).toBe("P2025");
+  });
+
+  it("should delete data successfully", async () => {
+    const res = await app.request(`/vehicle-brand/${id}`, { method: "DELETE" });
+    const data: TResponse<VehicleBrand> = await res.json();
+    expect(res.status).toBe(200);
+    expect(data.status).toBe("Success");
+    expect(data.data?.id).toBeString();
   });
 });

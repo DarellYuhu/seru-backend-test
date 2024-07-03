@@ -1,5 +1,6 @@
 import prisma from "@database";
 import { Prisma } from "@prisma/client";
+import { HTTPException } from "hono/http-exception";
 
 const create = async (data: Prisma.VehicleBrandCreateInput) => {
   return prisma.vehicleBrand.create({
@@ -50,4 +51,32 @@ const getAll = async (
   };
 };
 
-export default { create, getAll };
+const getById = async (id: string) => {
+  const vehicleBrand = await prisma.vehicleBrand.findUnique({
+    where: { id },
+  });
+  if (!vehicleBrand) {
+    throw new HTTPException(404, {
+      message: "Data you are searching for is unavailable",
+    });
+  }
+  return vehicleBrand;
+};
+
+const update = async (
+  id: string,
+  payload: Prisma.VehicleBrandUpdateWithoutVehicleTypeInput
+) => {
+  return await prisma.vehicleBrand.update({
+    where: { id },
+    data: payload,
+  });
+};
+
+const _delete = async (id: string) => {
+  return await prisma.vehicleBrand.delete({
+    where: { id },
+  });
+};
+
+export default { create, getAll, getById, update, _delete };

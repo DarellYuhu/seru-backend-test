@@ -39,7 +39,7 @@ model VehicleType {
   name           String
   description    String
   isOnroad       String
-  VehicleBrand   VehicleBrand   @relation(fields: [vehicleBrandId], references: [id])
+  VehicleBrand   VehicleBrand   @relation(fields: [vehicleBrandId], references: [id], onDelete: Cascade)
   vehicleBrandId String
   VehicleModel   VehicleModel[]
 }
@@ -47,7 +47,7 @@ model VehicleType {
 model VehicleModel {
   id            String      @id @default(uuid())
   name          String
-  VehicleTypeId VehicleType @relation(fields: [vehicleTypeId], references: [id])
+  VehicleTypeId VehicleType @relation(fields: [vehicleTypeId], references: [id], onDelete: Cascade)
   vehicleTypeId String
   PriceList     PriceList[]
 }
@@ -62,8 +62,8 @@ model PriceList {
   id             String       @id @default(uuid())
   code           String
   price          Int
-  VehicleYear    VehicleYear  @relation(fields: [vehicleYearId], references: [id])
+  VehicleYear    VehicleYear  @relation(fields: [vehicleYearId], references: [id], onDelete: Cascade)
   vehicleYearId  String
-  VehicleModel   VehicleModel @relation(fields: [vehicleModelId], references: [id])
+  VehicleModel   VehicleModel @relation(fields: [vehicleModelId], references: [id], onDelete: Cascade)
   vehicleModelId String
 }

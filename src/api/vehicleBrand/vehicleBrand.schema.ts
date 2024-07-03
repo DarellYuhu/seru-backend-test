@@ -8,6 +8,14 @@ const create = z.object({
   description: z.string(),
 });
 
+const update = z.object({
+  name: z.string().optional(),
+  country: z.string().optional(),
+  logoUri: z.string().optional(),
+  websiteUri: z.string().optional(),
+  description: z.string().optional(),
+});
+
 const query = z.object({
   name: z.string().optional(),
   country: z.string().optional(),
@@ -15,4 +23,4 @@ const query = z.object({
   page: z.preprocess((item) => Number(item), z.number()).optional(),
 });
 
-export default { create, query };
+export default { create, query, update };
