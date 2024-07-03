@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import {
   auth,
+  priceList,
   vehicleBrand,
   vehicleModel,
   vehicleType,
@@ -19,6 +20,7 @@ app.route("/vehicle-brand", vehicleBrand);
 app.route("/vehicle-type", vehicleType);
 app.route("/vehicle-model", vehicleModel);
 app.route("/vehicle-year", vehicleYear);
+app.route("/price-list", priceList);
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
