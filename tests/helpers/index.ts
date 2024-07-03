@@ -35,6 +35,20 @@ const seedDatabase = async () => {
   });
   user.password = pass;
 
+  const adminPass = faker.internet.password();
+  const adminPayload = {
+    username: faker.internet.userName(),
+    password: await Bun.password.hash(adminPass, "bcrypt"),
+    name: faker.person.fullName(),
+    email: faker.internet.email(),
+    address: faker.location.streetAddress({ useFullAddress: true }),
+    isAdmin: true,
+  };
+  const admin = await prisma.user.create({
+    data: adminPayload,
+  });
+  admin.password = adminPass;
+
   const vehicleBrand = Array.from({ length: 20 }).map(() => ({
     name: faker.vehicle.manufacturer(),
     country: faker.location.country(),
@@ -45,7 +59,7 @@ const seedDatabase = async () => {
   const vehicles = await prisma.vehicleBrand.createManyAndReturn({
     data: vehicleBrand,
   });
-  return { user, vehicles };
+  return { user, vehicles, admin };
 };
 
 export { generateCases, clearDatabase, seedDatabase };

@@ -4,6 +4,7 @@ import { zValidator } from "@hono/zod-validator";
 import vehicleBrandSchema from "./vehicleBrand.schema";
 import { HTTPException } from "hono/http-exception";
 import { Prisma } from "@prisma/client";
+import { authentication, authorization } from "../../middlewares";
 
 const vehicleBrand = new Hono();
 
@@ -71,6 +72,8 @@ vehicleBrand.get("/:id", async (c) => {
 
 vehicleBrand.patch(
   "/:id",
+  authentication,
+  authorization,
   zValidator("json", vehicleBrandSchema.update, (res, _) => {
     if (!res.success) {
       throw new HTTPException(400, {

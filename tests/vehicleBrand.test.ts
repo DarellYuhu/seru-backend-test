@@ -4,17 +4,26 @@ import { Prisma, VehicleBrand } from "@prisma/client";
 import { expect, it, describe, beforeAll, afterAll } from "bun:test";
 import { clearDatabase, generateCases, seedDatabase } from "./helpers";
 import { ZodError } from "zod";
+import authService from "../src/api/auth/auth.service";
 
 let country: string;
 let name: string;
 let id: string;
+let accessToken: string;
+let userToken: string;
 
 beforeAll(async () => {
   try {
-    const { vehicles } = await seedDatabase();
+    const { vehicles, admin, user } = await seedDatabase();
     country = vehicles[0].country;
     name = vehicles[0].name;
     id = vehicles[0].id;
+
+    const { token } = await authService.signIn(admin.username, admin.password);
+    accessToken = token;
+
+    const userCred = await authService.signIn(user.username, user.password);
+    userToken = userCred.token;
   } catch (error) {
     console.log("ERR_CLEANUP", error);
   }
@@ -154,12 +163,40 @@ describe("update by id", () => {
     websiteUri: faker.internet.url(),
   };
 
+  it("should fail when not authenticated", async () => {
+    const res = await app.request(`/vehicle-brand/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data: TResponse<VehicleBrand> = await res.json();
+    expect(res.status).toBe(401);
+    expect(data.status).toBe("Failed");
+  });
+
+  it("should fail when not authorized", async () => {
+    const res = await app.request(`/vehicle-brand/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
+    });
+    const data: TResponse<VehicleBrand> = await res.json();
+    expect(res.status).toBe(403);
+    expect(data.status).toBe("Failed");
+  });
+
   it("should fail update non exist data", async () => {
     const res = await app.request(`/vehicle-brand/${id}-NON-EXIST`, {
       method: "PATCH",
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     const data: TResponse<Prisma.PrismaClientKnownRequestError> =
@@ -183,6 +220,7 @@ describe("update by id", () => {
         body: JSON.stringify(newPayload),
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       const data: TResponse<VehicleBrand> = await res.json();
