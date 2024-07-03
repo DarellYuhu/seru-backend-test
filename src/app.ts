@@ -1,5 +1,11 @@
 import { Hono } from "hono";
-import { auth, vehicleBrand, vehicleModel, vehicleType } from "./api";
+import {
+  auth,
+  vehicleBrand,
+  vehicleModel,
+  vehicleType,
+  vehicleYear,
+} from "./api";
 import { HTTPException } from "hono/http-exception";
 
 const app = new Hono();
@@ -12,6 +18,7 @@ app.route("/auth", auth);
 app.route("/vehicle-brand", vehicleBrand);
 app.route("/vehicle-type", vehicleType);
 app.route("/vehicle-model", vehicleModel);
+app.route("/vehicle-year", vehicleYear);
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
