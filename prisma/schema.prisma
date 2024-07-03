@@ -53,8 +53,9 @@ model VehicleType {
 model VehicleModel {
   id            String      @id @default(uuid())
   name          String
-  VehicleTypeId VehicleType @relation(fields: [vehicleTypeId], references: [id], onDelete: Cascade)
+  VehicleType   VehicleType @relation(fields: [vehicleTypeId], references: [id], onDelete: Cascade)
   vehicleTypeId String
+  description   String
   PriceList     PriceList[]
   createAt      DateTime    @default(now())
   updateAt      DateTime    @updatedAt

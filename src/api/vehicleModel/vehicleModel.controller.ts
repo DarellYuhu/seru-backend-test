@@ -2,14 +2,14 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { HTTPException } from "hono/http-exception";
 import { Prisma } from "@prisma/client";
-import vehicleTypeSchema from "./vehicleType.schema";
-import vehicleTypeService from "./vehicleType.service";
+import vehicleModelSchema from "./vehicleModel.schema";
+import vehicleModelService from "./vehicleModel.service";
 
-const vehicleType = new Hono();
+const vehicleModel = new Hono();
 
-vehicleType.post(
+vehicleModel.post(
   "/",
-  zValidator("json", vehicleTypeSchema.create, (res, _) => {
+  zValidator("json", vehicleModelSchema.create, (res, _) => {
     if (!res.success) {
       throw new HTTPException(400, {
         message: "Bad request",
@@ -20,10 +20,10 @@ vehicleType.post(
   async (c) => {
     try {
       const payload = c.req.valid("json");
-      const data = await vehicleTypeService.create(payload);
+      const data = await vehicleModelService.create(payload);
       return c.json<TResponse<typeof data>>({
         status: "Success",
-        message: "Type create successfuly",
+        message: "Model create successfuly",
         data,
       });
     } catch (error) {
@@ -32,13 +32,13 @@ vehicleType.post(
   }
 );
 
-vehicleType.get(
+vehicleModel.get(
   "/",
-  zValidator("query", vehicleTypeSchema.query),
+  zValidator("query", vehicleModelSchema.query),
   async (c) => {
     try {
       const { limit, page, ...query } = c.req.valid("query");
-      const { data, metadata } = await vehicleTypeService.getAll(
+      const { data, metadata } = await vehicleModelService.getAll(
         limit,
         page,
         query
@@ -55,10 +55,10 @@ vehicleType.get(
   }
 );
 
-vehicleType.get("/:id", async (c) => {
+vehicleModel.get("/:id", async (c) => {
   try {
     const id = c.req.param("id");
-    const data = await vehicleTypeService.getById(id);
+    const data = await vehicleModelService.getById(id);
     return c.json<TResponse>({
       status: "Success",
       message: "Data retrieve successfully",
@@ -69,9 +69,9 @@ vehicleType.get("/:id", async (c) => {
   }
 });
 
-vehicleType.patch(
+vehicleModel.patch(
   "/:id",
-  zValidator("json", vehicleTypeSchema.update, (res, _) => {
+  zValidator("json", vehicleModelSchema.update, (res, _) => {
     if (!res.success) {
       throw new HTTPException(400, {
         message: "Bad request",
@@ -83,7 +83,7 @@ vehicleType.patch(
     try {
       const id = c.req.param("id");
       const payload = c.req.valid("json");
-      const data = await vehicleTypeService.update(id, payload);
+      const data = await vehicleModelService.update(id, payload);
       return c.json<TResponse>({
         status: "Success",
         message: "Data update successfully",
@@ -103,10 +103,10 @@ vehicleType.patch(
   }
 );
 
-vehicleType.delete("/:id", async (c) => {
+vehicleModel.delete("/:id", async (c) => {
   try {
     const id = c.req.param("id");
-    const data = await vehicleTypeService._delete(id);
+    const data = await vehicleModelService._delete(id);
     return c.json<TResponse>({
       status: "Success",
       message: "Data update successfully",
@@ -125,4 +125,4 @@ vehicleType.delete("/:id", async (c) => {
   }
 });
 
-export default vehicleType;
+export default vehicleModel;
