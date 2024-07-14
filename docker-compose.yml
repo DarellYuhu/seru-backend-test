@@ -1,7 +1,6 @@
 services:
   db-test:
     image: postgres:latest
-    restart: always
     ports:
       - "5433:5432"
     environment:
@@ -11,7 +10,6 @@ services:
 
   db-dev:
     image: postgres:latest
-    restart: always
     ports:
       - "5434:5432"
     volumes:
